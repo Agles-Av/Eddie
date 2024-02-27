@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { Button,Avatar } from '@rneui/base'
-import { getAuth } from 'firebase/auth'
+import { getAuth,updateProfile } from 'firebase/auth'
 import Loading from '../../../../kernel/components/Loading'
 
 const Profile = () => {
@@ -15,13 +15,23 @@ const Profile = () => {
     }
   },[]);
 
+  const updateUserProfile = () =>{
+    updateProfile(auth.currentUser, {
+      displayName: "Agles Avelar Ocampo", photoURL: "https://firebasestorage.googleapis.com/v0/b/restauranteagles-b4e14.appspot.com/o/avatar%2FCI4vStuxs8MCYVukZgfNzOG5XFC2.jpeg?alt=media&token=19cc012c-35fd-4aa8-a33c-df73a861941f"
+    }).then(() => {
+      console.log("Listo");
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <Avatar
           size={64}
           rounded
-          source={{ uri: 'https://randomuser.me/api/portraits/women/57.jpg' }}
+          source={{ uri: user?.photoURL ? user?.photoURL :'https://randomuser.me/api/portraits/women/57.jpg' }}
           title="Bj"
           containerStyle={{ backgroundColor: 'grey' }}
         >
@@ -38,6 +48,13 @@ const Profile = () => {
         buttonStyle={styles.BtnStyle}
         titleStyle={{ color: 'black' }}
         onPress={() => auth.signOut()}
+      />
+            <Button
+        title='Actualizar'
+        containerStyle={styles.Btncontainer}
+        buttonStyle={styles.BtnStyle}
+        titleStyle={{ color: 'black' }}
+        onPress={updateUserProfile}
       />
     </View>
   )
@@ -63,5 +80,5 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     padding: 16
-  }
+  },
 })
