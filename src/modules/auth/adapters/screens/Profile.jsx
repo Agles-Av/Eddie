@@ -17,7 +17,7 @@ const Profile = () => {
 
   const updateUserProfile = () =>{
     updateProfile(auth.currentUser, {
-      displayName: "Agles Avelar Ocampo", photoURL: "https://firebasestorage.googleapis.com/v0/b/restauranteagles-b4e14.appspot.com/o/avatar%2FCI4vStuxs8MCYVukZgfNzOG5XFC2.jpeg?alt=media&token=19cc012c-35fd-4aa8-a33c-df73a861941f"
+      displayName: "Agles Avelar Ocampo", photoURL: "https://firebasestorage.googleapis.com/v0/b/restauranteagles-b4e14.appspot.com/o/avatar%2FCI4vStuxs8MCYVukZgfNzOG5XFC2.jpeg?alt=media&token=5686ca7d-d267-4991-b415-d7770c839154"
     }).then(() => {
       console.log("Listo");
     }).catch((error) => {
