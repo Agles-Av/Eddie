@@ -10,6 +10,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login(props) {
     const { navigation } = props;
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(true);
