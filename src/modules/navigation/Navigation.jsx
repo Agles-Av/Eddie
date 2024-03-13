@@ -5,7 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AuthStack from './stack/AuthStack';
 import FavoritesStack from './stack/FavoritesStack';
 import HomeStack from './stack/HomeStack';
-import {Icon} from '@rneui/base'
+import { Icon } from '@rneui/base'
+import PushNotification from '../notifications/PushNotification';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,11 @@ export default function Navigation() {
                     component={AuthStack}
                     options={{ title: 'Perfil' }}
                 />
+                <Tab.Screen
+                    name='Notifications'
+                    component={PushNotification}
+                    options={{ title: "notificaciones" }}
+                />
             </Tab.Navigator>
         </NavigationContainer>
     )
@@ -59,7 +65,11 @@ const getIconName = (routeName, focused) => {
         case 'AuthStack':
             iconName = focused ? 'account' : 'account-outline';
             break;
+        case 'Notifications':
+            iconName = focused ? 'bell' : 'bell-outline';
+            break;
     }
 
     return { iconName, iconType };
 };
+
